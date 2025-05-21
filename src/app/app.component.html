@@ -4,9 +4,11 @@
     <div class="header-left">
       <div><img alt="Логотип сайта" src="assets/logo.svg"></div>
       <nav class="header-nav">
-        <div class="header-nav-item">Главная</div>
-        <div class="header-nav-item">О компании</div>
-        <div class="header-nav-item">Каталог</div>
+        <div class="header-nav-item">{{navItem1}}</div>
+        <div class="header-nav-item" *ngIf="isShowAboutCompany">{{aboutCompany}}</div>
+        <div class="header-nav-item">{{navItem3}}</div>
+        <button (click)="isShowAboutCompany = !isShowAboutCompany">Скрыть/Показать</button>
+        <button (click)="changeMenuText()">Изменить текст</button>
       </nav>
     </div>
     <div class="header-right">
@@ -26,10 +28,7 @@
         <img src="assets/menu.svg" alt="Меню">
         <span class="catalog">Каталог</span>
       </div>
-      <button class="header-below-item-button">Стройматериалы</button>
-      <button class="header-below-item-button">Инструменты</button>
-      <button class="header-below-item-button">Электрика</button>
-      <button class="header-below-item-button">Интерьер и одежда</button>
+        <button class="header-below-item-button" *ngFor="let item of menuItems">{{item}}</button>      
     </div>
 
     <div class="header-below-right">
@@ -46,7 +45,8 @@
 </div>
 <!-- конец шапки -->
 <div>
-  <img  class="poster" src="assets/poster.svg" alt="Баннер">
+  <button (click)="isShowImg = !isShowImg">Скрыть/Показать</button>
+  <img *ngIf="isShowImg" class="poster" src="assets/poster.svg" alt="Баннер">
 </div>
 
 <div class="goods-container">
@@ -66,11 +66,7 @@
     </div>
 <!-- кнопки переключения карточек -->
     <div class="goods_buttons">
-      <button class="item active-button">1</button>
-      <button class="item">2</button>
-      <button class="item">3</button>
-      <button class="item">4</button>
-      <button class="item">5</button>
+      <button class="item active-button" *ngFor="let item of newPages">{{item}}</button>
     </div>
 <!-- карточки с товарами-->
     <div class="goods_card_1">
@@ -236,7 +232,7 @@
     <div class="cleaning_wheel">
       <div class="discount_like newly">
         <img class="new" src="assets/new.png">
-        <img class="like_third" src="assets/Like.png">
+        <img class="like_third" src="assets/like.png">
       </div>
       <img class="img_wheel" src="assets/wheel.png">
       <span class="description description_1">Круг зачистной 125х6х22</span>
