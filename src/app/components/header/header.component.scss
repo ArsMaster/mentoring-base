@@ -1,0 +1,104 @@
+.header-top {
+    background-color: #4B565E;
+    height: 80px;
+    padding: 0 240px;
+    display:flex ;
+    justify-content: space-between;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-nav-item {
+    padding-left: 20px;
+}
+
+.header-nav {
+    display: flex;
+}
+
+.header-right {
+    align-items: center;
+    display: flex;
+}
+
+.phone-number {
+    color: white;
+    text-decoration: none;
+    padding-left: 20px;
+}
+
+.heart {
+    padding-left: 30px;
+}
+
+.cart {
+    background-color: #4B565E;
+    border-radius: 20px; 
+    border: 1px solid #F0BA4E; 
+    align-items: center;
+    display: flex;
+    margin-left: 20px;
+}
+
+.empty {
+    color: white;
+}
+
+.header-below {
+    background-color: #F0BA4E;
+    height: 48px;   
+    display: flex;
+    align-items: center;
+    color: black;
+    justify-content: center;
+    font-size: 14px;
+    padding: 0 240px;
+}
+
+.header-below-left {
+    display: flex;
+    align-items: center;
+    padding-right: 400px;
+}
+
+.header-below-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-below-item {
+    display: flex;
+    align-items: center;
+}
+
+.header-below-item-button {
+    background-color: #F0BA4E;
+    margin-left: 20px;
+    border: 0;
+    max-height: 48px;
+}
+
+.div-search {
+    border-bottom: 1px solid #4B565E;
+    display: flex;
+}
+
+.input {
+    width: 400px;
+    background-color: #F0BA4E;
+    max-height: 28px;
+    max-width: 400px;
+    text-align: left; 
+    border: 0;
+}
+
+.catalog {
+    padding-left: 15px;
+}
+
+.location {
+    padding-left: 20px;
+}
