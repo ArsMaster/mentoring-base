@@ -36,9 +36,11 @@ isShowCatalog : boolean = true;
 
   changeMenuText(): void {
     this.menuItems = upperCasemenuItems.map(
-      item => this.isUpperCase ? item.toLowerCase() : item.toUpperCase()
-    )
+      (item: string): string => this.isUpperCase 
+      ? item.toLowerCase() 
+      : item.toUpperCase()
+    );
 
-    this.isUpperCase = !this.isUpperCase
+    this.isUpperCase = !this.isUpperCase;
   }
 }

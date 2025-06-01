@@ -46,15 +46,7 @@ readonly apiService = inject(HttpClient);
     )
   }
 
-  deleteUser(id: number) {
-    this.users = this.users.filter(
-      (      item: { id: number; }) => {
-        if (id === item.id) {
-          return false
-        } else {
-          return true;
-        }
-      }
-    )
+  deleteUser(id: number): void {
+  this.users = this.users.filter((user: User) => user.id !== id);
   }
 }
