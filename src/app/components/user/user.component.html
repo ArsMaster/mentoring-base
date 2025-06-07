@@ -3,12 +3,6 @@
 
 <div class="users_containter">
     <div *ngFor="let user of users" class="users">
-        <p>{{ user.name }}</p>
-        <p>{{ user.email }}</p>
-        <p>{{ user.website }}</p>
-        <p>{{ user.company.name }}</p>
-        <button (click)="deleteUser(user.id)" class="deleteButton">
-        Удалить пользователя
-        </button>
+        <app-user-card [user]="user" (deleteUser)="deleteUser($event)"></app-user-card>
     </div>
 </div>
