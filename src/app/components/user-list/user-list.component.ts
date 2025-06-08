@@ -1,8 +1,8 @@
 import { NgFor } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
-import { UsersApiService } from './user.api.service';
-import { UserCardComponent } from './card/card.component';
+import { UsersApiService } from './user-list.api.service';
+import { UserCardComponent } from './user-card/user-card.component';
 
 export interface User {
   id: number;
@@ -33,8 +33,8 @@ export interface User {
   selector: 'app-user',
   standalone: true,
   imports: [NgFor, UserCardComponent],
-  templateUrl: './user.component.html',
-  styleUrl: './user.component.scss'
+  templateUrl: './user-list.component.html',
+  styleUrl: './user-list.component.scss'
 })
 export class UserComponent {
 readonly apiService = inject(UsersApiService);
@@ -42,13 +42,13 @@ readonly apiService = inject(UsersApiService);
 
   constructor() {
     this.apiService.getUsers().subscribe(
-      (response: any) => {
+      (response: User[]) => {
         this.users = response;
       }
     )
   }
 
   deleteUser(id: number): void {
-  this.users = this.users.filter((user: User) => user.id !== id);
+    this.users = this.users.filter((user: User) => user.id !== id);
   }
 }

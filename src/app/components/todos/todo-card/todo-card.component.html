@@ -5,9 +5,9 @@
     </div>
 
     <p>Автор задачи</p>
-    <div>{{ todo.user }}</div>
+    <div>{{ todo.userId }}</div>
 
     <p>Задача завершена</p>
     <div>{{ todo.completed ? 'Да' : 'Нет' }}</div>
-    <button (click)=onDeleteTodo(todo.id) class="deleteButton">Удалить задачу</button>
+    <button (click)="onDeleteTodo(todo.id)" class="deleteButton">Удалить задачу</button>
 </div>
