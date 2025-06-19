@@ -15,13 +15,7 @@ export class TodosService {
     editTodo(editedTodo: Todo) {
         this.todosSubject$.next(
             this.todosSubject$.value.map(
-                todo => {
-                    if (todo.id === editedTodo.id) {
-                        return editedTodo
-                    } else {
-                        return todo
-                    }
-                }
+                (todo: Todo) => todo.id === editedTodo.id ? editedTodo : todo
             )
         )
     }
@@ -34,15 +28,7 @@ export class TodosService {
     
     deleteTodo(id: number) {
         this.todosSubject$.next(
-            this.todosSubject$.value.filter(
-                item => {
-                    if (id === item.id) {
-                        return false
-                    } else {
-                        return true;
-                    }
-                }
-            )
+            this.todosSubject$.value.filter((item: Todo) => id !== item.id)
         )
     }
 }

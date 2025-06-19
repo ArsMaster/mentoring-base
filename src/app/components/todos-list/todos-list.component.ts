@@ -15,17 +15,14 @@ import { TodosService } from "./todos.service";
 })
 
 export class TodosListComponent {
-    readonly todosApiService = inject(TodosApiService);
     readonly todosService = inject(TodosService);
     todos: Todo[] = [];
 
     constructor() {
-      this.todosApiService.getTodos().subscribe(
-        (response: Todo[]) => {
-          this.todos = response;
-          this.todosService.setTodos(response);
-        }
-      )
+      inject(TodosApiService).getTodos().subscribe((response: Todo[]) => {
+        this.todos = response;
+        this.todosService.setTodos(response);
+      });
     }
 
     deleteTodo(id: number): void {
