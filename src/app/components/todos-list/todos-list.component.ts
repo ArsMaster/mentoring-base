@@ -6,6 +6,11 @@ import { Todo } from "./todo-card/todo-card.component";
 import { TodosService } from "./todos.service";
 import { CreateTodoFormComponent } from "../create-todo-form/create-todo-form.component";
 
+interface TodoFormData {
+  text: string;
+  completed: boolean;
+}
+
 @Component ({
     selector: 'app-todos-list',
     templateUrl: './todos-list.component.html',
@@ -28,12 +33,12 @@ export class TodosListComponent {
       this.todosService.deleteTodo(id);
     }
 
-    public createTodo(formData: any) {
+    public createTodo(formData: TodoFormData) {
       this.todosService.createTodo({
         id: new Date().getTime(),
         title: formData.text,
         completed: formData.completed,
-        userId: 0
+        userId: 1
       });
     }
 } 

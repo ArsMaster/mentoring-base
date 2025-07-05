@@ -1,14 +1,12 @@
 <h1>Create Todo Form</h1>
 <div class="box-form">
-    <form 
-    [formGroup]="form"
-    (ngSubmit)="submitForm()" class="area-form">
+    <form [formGroup]="form"(ngSubmit)="submitForm()" class="area-form">
         <p>Текст задачи</p>
         <input type="text" class="form-input" formControlName="text">
         <p>Автор задачи</p>
         <input type="text" class="form-input" formControlName="author">
         <p>Задача завершена</p>
-        <input type="text" class="form-input" formControlName="completed">
+        <input type="checkbox" class="form-input" formControlName="completed">
         <button class="form-button" [disabled]="form.invalid">Create Todo</button>
     </form>
 </div>

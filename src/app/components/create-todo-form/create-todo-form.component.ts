@@ -11,15 +11,22 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angula
 
 export class CreateTodoFormComponent {
     @Output()
-    createTodo = new EventEmitter();
+    createTodo = new EventEmitter<{text: string, author: string, completed: boolean}>();
 
     public form = new FormGroup({
         text: new FormControl('', [Validators.required, Validators.minLength(2)]),
         author: new FormControl('', [Validators.required, Validators.minLength(2)]),
-        completed: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        completed: new FormControl(false, [Validators.required]),
     })
 
     public submitForm(): void {
-        this.createTodo.emit(this.form.value);
+        if (this.form.valid) {
+            this.createTodo.emit({
+                text: this.form.value.text!,
+                author: this.form.value.author!,
+                completed: this.form.value.completed!
+            });
+            this.form.reset();
+        }
     }
 }
