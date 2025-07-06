@@ -1,6 +1,12 @@
 import { Component, EventEmitter, Output } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 
+interface TodoFormData {
+  text: string;
+  author: string;
+  completed: boolean;
+}
+
 @Component({
     selector: 'create-todo-form',
     templateUrl: './create-todo-form.html',
@@ -11,7 +17,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angula
 
 export class CreateTodoFormComponent {
     @Output()
-    createTodo = new EventEmitter<{text: string, author: string, completed: boolean}>();
+    createTodo = new EventEmitter<TodoFormData>();
 
     public form = new FormGroup({
         text: new FormControl('', [Validators.required, Validators.minLength(2)]),
