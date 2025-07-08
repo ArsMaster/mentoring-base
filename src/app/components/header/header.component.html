@@ -1,11 +1,13 @@
 <!-- верхняя часть шапки -->
-  <div class="header">
-    <div class="header-top">
+<div class="header">
+  <div class="header-top">
     <div class="header-left">
       <div><img alt="Логотип сайта" src="assets/logo.svg"></div>
       <nav class="header-nav">
         <div class="header-nav-item">{{ navItem1 }}</div>
-        <div class="header-nav-item" *ngIf="isShowAboutCompany">{{ aboutCompany }}</div>
+        @if (isShowAboutCompany) {
+          <div class="header-nav-item">{{ aboutCompany }}</div>
+        }
         <div class="header-nav-item thelastone">{{ navItem3 }}</div>
         <button (click)="isShowAboutCompany = !isShowAboutCompany" class="admin">Скрыть/Показать</button>
         <button (click)="changeMenuText()" class="admin">Изменить текст</button>
@@ -23,13 +25,15 @@
       </button>
     </div>
   </div>
-<!-- нижняя часть шапки -->
+  <!-- нижняя часть шапки -->
   <div class="header-below">
     <div class="header-below-left">
       <div class="header-below-item">
         <img src="assets/menu.svg" alt="Меню">
       </div>
-        <button class="header-below-item-button" *ngFor="let item of menuItems">{{ item }}</button>      
+      @for (item of menuItems; track item) {
+        <button class="header-below-item-button">{{ item }}</button>
+      }
     </div>
 
     <div class="header-below-right">

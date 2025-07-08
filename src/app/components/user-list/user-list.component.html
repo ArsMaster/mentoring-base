@@ -2,7 +2,9 @@
 <span class="heading_users">Список пользователей</span>
 
 <div class="users_containter">
-    <div *ngFor="let user of users" class="users">
-        <app-user-card [user]="user" (deleteUser)="deleteUser($event)"></app-user-card>
+  @for (user of users; track user) {
+    <div class="users">
+      <app-user-card [user]="user" (deleteUser)="deleteUser($event)"></app-user-card>
     </div>
+  }
 </div>

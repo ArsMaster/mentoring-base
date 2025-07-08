@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { UsersApiService } from './user-list.api.service';
@@ -31,7 +31,7 @@ export interface User {
 
 @Component({
     selector: 'app-user',
-    imports: [NgFor, UserCardComponent],
+    imports: [UserCardComponent],
     templateUrl: './user-list.component.html',
     styleUrl: './user-list.component.scss'
 })

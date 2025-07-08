@@ -1,4 +1,4 @@
-import { NgFor, NgIf } from '@angular/common';
+
 import { Component } from '@angular/core';
 
 const newPages : number[] = [5,4,3,2,1]
@@ -12,7 +12,7 @@ const upperCasemenuItems : string[] = menuItems.map(
 
 @Component({
     selector: 'app-homepage',
-    imports: [NgFor, NgIf],
+    imports: [],
     templateUrl: './homepage.component.html',
     styleUrl: './homepage.component.scss'
 })

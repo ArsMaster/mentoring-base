@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor } from "@angular/common";
+import { AsyncPipe } from "@angular/common";
 import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from "@angular/core";
 import { TodoCardComponent } from "./todo-card/todo-card.component";
 import { TodosApiService } from "./todos.api-service.component"; 
@@ -15,7 +15,7 @@ interface TodoFormData {
     selector: 'app-todos-list',
     templateUrl: './todos-list.component.html',
     styleUrl: './todos-list.component.scss',
-    imports: [NgFor, TodoCardComponent, AsyncPipe, CreateTodoFormComponent],
+    imports: [TodoCardComponent, AsyncPipe, CreateTodoFormComponent],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 

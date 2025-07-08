@@ -1,4 +1,4 @@
-import { NgFor, NgIf } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -13,7 +13,7 @@ const upperCasemenuItems : string[] = menuItems.map(
 
 @Component({
     selector: 'app-header',
-    imports: [NgFor, NgIf, RouterLink],
+    imports: [RouterLink],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss'
 })
