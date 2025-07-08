@@ -11,8 +11,7 @@ export interface Todo {
     selector: 'app-todo-card',
     templateUrl: './todo-card.component.html',
     styleUrl: './todo-card.component.scss',
-    standalone: true,
-    imports: [],
+    imports: []
 })
 
 export class TodoCardComponent {

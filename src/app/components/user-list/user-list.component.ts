@@ -30,11 +30,10 @@ export interface User {
 }
 
 @Component({
-  selector: 'app-user',
-  standalone: true,
-  imports: [NgFor, UserCardComponent],
-  templateUrl: './user-list.component.html',
-  styleUrl: './user-list.component.scss'
+    selector: 'app-user',
+    imports: [NgFor, UserCardComponent],
+    templateUrl: './user-list.component.html',
+    styleUrl: './user-list.component.scss'
 })
 export class UserComponent {
 readonly apiService = inject(UsersApiService);

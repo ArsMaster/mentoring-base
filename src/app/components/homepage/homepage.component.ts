@@ -11,11 +11,10 @@ const upperCasemenuItems : string[] = menuItems.map(
 )
 
 @Component({
-  selector: 'app-homepage',
-  standalone: true,
-  imports: [NgFor, NgIf],
-  templateUrl: './homepage.component.html',
-  styleUrl: './homepage.component.scss'
+    selector: 'app-homepage',
+    imports: [NgFor, NgIf],
+    templateUrl: './homepage.component.html',
+    styleUrl: './homepage.component.scss'
 })
 export class HomepageComponent {
  isShowCatalog : boolean = true;

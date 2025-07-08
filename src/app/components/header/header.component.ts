@@ -12,11 +12,10 @@ const upperCasemenuItems : string[] = menuItems.map(
 )
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [NgFor, NgIf, RouterLink],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+    selector: 'app-header',
+    imports: [NgFor, NgIf, RouterLink],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
 isShowCatalog : boolean = true;

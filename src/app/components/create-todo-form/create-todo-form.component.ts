@@ -11,8 +11,7 @@ interface TodoFormData {
     selector: 'create-todo-form',
     templateUrl: './create-todo-form.html',
     styleUrl: './create-todo-form.scss',
-    standalone: true,
-    imports: [ReactiveFormsModule],
+    imports: [ReactiveFormsModule]
 })
 
 export class CreateTodoFormComponent {
