@@ -1,12 +1,19 @@
 <h1>Create Todo Form</h1>
+
 <div class="box-form">
     <form [formGroup]="form"(ngSubmit)="submitForm()" class="area-form">
-        <p>Текст задачи</p>
-        <input type="text" class="form-input" formControlName="text">
-        <p>Автор задачи</p>
-        <input type="text" class="form-input" formControlName="author">
-        <p>Задача завершена</p>
-        <input type="checkbox" class="form-input" formControlName="completed">
-        <button class="form-button" [disabled]="form.invalid">Create Todo</button>
+        <mat-form-field>
+            <mat-label>Введите текст задачи</mat-label>
+            <input matInput placeholder="Закончить 12 урок менторинга" formControlName="text">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Введите автора задачи</mat-label>
+            <input matInput placeholder="Иван Иванов" formControlName="author">
+        </mat-form-field>
+
+        <mat-checkbox formControlName="completed">Задача завершена</mat-checkbox>
+
+        <button [disabled]="form.invalid" mat-button>Добавить задачу</button>
     </form>
 </div>

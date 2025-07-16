@@ -1,8 +1,8 @@
 <!--Cписок пользователей-->
 <span class="heading_users">Список пользователей</span>
-
+<create-user-form (createUser)="createUser($event)"></create-user-form>
 <div class="users_containter">
-  @for (user of users; track user) {
+  @for (user of usersService.users$ | async; track user) {
     <div class="users">
       <app-user-card [user]="user" (deleteUser)="deleteUser($event)"></app-user-card>
     </div>

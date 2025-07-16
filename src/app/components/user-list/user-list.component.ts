@@ -1,53 +1,40 @@
-
-import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
 import { UsersApiService } from './user-list.api.service';
 import { UserCardComponent } from './user-card/user-card.component';
-
-export interface User {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  adress: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: {
-      lat: string;
-      lng: string;
-    }
-  }
-  phone: string;
-  website: string;
-  company: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
-  }
-
-}
+import { CreateUserFormComponent } from "../create-user-form/create-user-form.component";
+import { AsyncPipe } from "@angular/common";
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from "@angular/core";
+import { UsersService } from './users.service';
+import { User } from './user-card/user-card.component';
+import { UserFormData } from '../create-user-form/create-user-form.component';
 
 @Component({
     selector: 'app-user',
-    imports: [UserCardComponent],
+    imports: [UserCardComponent, CreateUserFormComponent, AsyncPipe],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './user-list.component.html',
     styleUrl: './user-list.component.scss'
 })
+
 export class UserComponent {
-readonly apiService = inject(UsersApiService);
-  users: User[] = [];
+readonly usersService = inject(UsersService);
 
-  constructor() {
-    this.apiService.getUsers().subscribe(
-      (response: User[]) => {
-        this.users = response;
+   constructor() {
+        inject(UsersApiService).getUsers().subscribe((response: User[]) => {
+          this.usersService.setUsers(response);
+        });
       }
-    )
-  }
-
-  deleteUser(id: number): void {
-    this.users = this.users.filter((user: User) => user.id !== id);
-  }
+  
+      deleteUser(id: number): void {
+        this.usersService.deleteUser(id);
+      }
+  
+      public createUser(formData: UserFormData) {
+        this.usersService.createUser({
+          id: new Date().getTime(),
+          name: formData.name,
+          username: formData.username,
+          website: formData.website,
+          email: formData.email,
+        });
+      }
 }

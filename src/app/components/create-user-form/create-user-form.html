@@ -1,0 +1,27 @@
+<h1>Create User Form</h1>
+
+<div class="box-form">
+    <form [formGroup]="form"(ngSubmit)="submitForm()" class="area-form">
+        <mat-form-field>
+            <mat-label>Введите имя</mat-label>
+            <input matInput placeholder="Иван Иванов" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Введите логин</mat-label>
+            <input matInput placeholder="GameChanger" formControlName="username">
+        </mat-form-field>
+
+         <mat-form-field>
+            <mat-label>Введите email</mat-label>
+            <input matInput placeholder="exemple@gmail.com" formControlName="email">
+        </mat-form-field>
+
+         <mat-form-field>
+            <mat-label>Введите сайт</mat-label>
+            <input matInput placeholder="google.com" formControlName="website">
+        </mat-form-field>
+
+        <button [disabled]="form.invalid" mat-button>Добавить пользователя</button>
+    </form>
+</div>
