@@ -6,17 +6,21 @@ import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output
 import { UsersService } from './users.service';
 import { User } from './user-card/user-card.component';
 import { UserFormData } from '../create-user-form/create-user-form.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { CreateUserDialogComponent } from './create-user-dialog/create-user-dialog.component';
 
 @Component({
     selector: 'app-user',
-    imports: [UserCardComponent, CreateUserFormComponent, AsyncPipe],
+    imports: [UserCardComponent, AsyncPipe],
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './user-list.component.html',
-    styleUrl: './user-list.component.scss'
+    styleUrl: './user-list.component.scss',
+    standalone: true,
 })
 
 export class UserComponent {
 readonly usersService = inject(UsersService);
+  user: any;
 
    constructor() {
         inject(UsersApiService).getUsers().subscribe((response: User[]) => {
@@ -27,14 +31,31 @@ readonly usersService = inject(UsersService);
       deleteUser(id: number): void {
         this.usersService.deleteUser(id);
       }
-  
-      public createUser(formData: UserFormData) {
-        this.usersService.createUser({
-          id: new Date().getTime(),
-          name: formData.name,
-          username: formData.username,
-          website: formData.website,
-          email: formData.email,
-        });
+
+      editUser(user: any) {
+        this.usersService.editUser({
+          ...user,
+        })
       }
+
+      @Output()
+      createUser = new EventEmitter<number>();
+  
+      readonly dialog = inject(MatDialog);
+
+      openCreateDialog(): void {
+      const dialogRef = this.dialog.open(CreateUserDialogComponent, {
+        data: { user: null },
+        width: '400px',
+      });
+
+      dialogRef.afterClosed().subscribe(createResult => {
+      if (createResult) {
+      this.usersService.createUser({
+        id: new Date().getTime(),
+        ...createResult
+      });
+    }
+    });
+  }
 }

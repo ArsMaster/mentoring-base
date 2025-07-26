@@ -30,7 +30,6 @@ export class UsersService {
             alert('Такой пользователь уже существует');
         } else {
             this.usersSubject$.next([...this.usersSubject$.value, user]);
-            alert('Новый пользователь добавлен');
         }
     }
     

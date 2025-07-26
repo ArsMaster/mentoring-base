@@ -1,4 +1,8 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, inject, Input, Output } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import { EditUserDialogComponent } from "../edit-user-dialog/edit-user-dialog.component";
+import { MatDialogModule } from "@angular/material/dialog";
+import { DeleteUserDialogComponent } from "../delete-user-dialog/delete-user-dialog.component";
 
 export interface User {
   id: number;
@@ -13,6 +17,7 @@ export interface User {
     templateUrl: './user-card.component.html',
     styleUrl: './user-card.component.scss',
     standalone: true,
+    imports: [MatDialogModule],
 })
 
 export class UserCardComponent {
@@ -20,9 +25,34 @@ export class UserCardComponent {
     user!: User;
 
     @Output()
-    deleteUser = new EventEmitter<number>()
+    deleteUser = new EventEmitter<number>();
 
-    onDeleteUser(userId: number) {
-         this.deleteUser.emit(userId)
+    @Output()
+    editUser = new EventEmitter<number>();
+
+    readonly dialog = inject(MatDialog);
+
+      openDeleteDialog(): void {
+    const dialogRef = this.dialog.open(DeleteUserDialogComponent, {
+      data: { user: this.user },
+    });
+
+    dialogRef.afterClosed().subscribe((result: boolean | undefined) => {
+      if (result) {
+        this.deleteUser.emit(this.user.id)
+      }
+    });
+  }
+
+    openDialog(): void {
+      const dialogRef = this.dialog.open(EditUserDialogComponent, {
+        data: { user: this.user },
+      });
+
+      dialogRef.afterClosed().subscribe(editResult => {
+        if (editResult) {
+          this.editUser.emit(editResult);
+        }
+      });
     }
 }

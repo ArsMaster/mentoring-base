@@ -1,8 +1,11 @@
-   <div>
+    <div>
         <p>{{ user.name }}</p>
         <p>{{ user.email }}</p>
         <p>{{ user.website }}</p>
-        <button (click)="onDeleteUser(user.id)" class="deleteButton">
-        Удалить пользователя
-        </button>       
+        <button (click)="openDeleteDialog()" class="deleteButton">
+        Удалить
+        </button>
+        <button (click)="openDialog()" class="deleteButton">
+        Изменить
+        </button>          
    </div>

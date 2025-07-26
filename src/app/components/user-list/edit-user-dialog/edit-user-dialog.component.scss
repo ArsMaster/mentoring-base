@@ -1,14 +1,20 @@
 .box-form {
     margin: 30px;
-    max-width: 400px;
-    color: black;
+    max-width: 500px;
+    color: #000000;
 }
 
 .area-form {
     display: flex;
     flex-direction: column;
+    width: 350px;
 }
 
 .form-button {
     margin-top: 30px;
+}
+
+.edit-user-button {
+    border: solid 1px black;
+    width: 200px;
 }

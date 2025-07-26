@@ -1,4 +1,4 @@
-<h1>Create Todo Form</h1>
+<h1 style="color: black; padding-left: 30px;">Create Todo Form</h1>
 
 <div class="box-form">
     <form [formGroup]="form"(ngSubmit)="submitForm()" class="area-form">
@@ -14,6 +14,6 @@
 
         <mat-checkbox formControlName="completed">Задача завершена</mat-checkbox>
 
-        <button [disabled]="form.invalid" mat-button>Добавить задачу</button>
+        <button class="createTodoButton" [disabled]="form.invalid" mat-button>Добавить задачу</button>
     </form>
 </div>

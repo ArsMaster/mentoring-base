@@ -1,0 +1,32 @@
+<div class="box-form">
+    <h1>Edit User Dialog</h1>
+    <form [formGroup]="form"(ngSubmit)="submitForm()" class="area-form">
+        <mat-form-field>
+            <mat-label>Введите имя</mat-label>
+            <input matInput placeholder="Иван Иванов" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Введите логин</mat-label>
+            <input matInput placeholder="GameChanger" formControlName="username">
+        </mat-form-field>
+
+         <mat-form-field>
+            <mat-label>Введите email</mat-label>
+            <input matInput placeholder="exemple@gmail.com" formControlName="email">
+        </mat-form-field>
+
+         <mat-form-field>
+            <mat-label>Введите сайт</mat-label>
+            <input matInput placeholder="google.com" formControlName="website">
+        </mat-form-field>
+
+        <button class="edit-user-button" 
+        [disabled]="form.invalid" 
+        mat-button 
+        [mat-dialog-close]="userWithUpdatedFields"
+        (click)="openSnackBar('Данные изменены', 'Готово')">
+            Изменить пользователя</button>
+    </form>
+</div>
+

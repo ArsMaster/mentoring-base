@@ -1,4 +1,14 @@
+.todos-heading {
+    color: black; 
+    font-size: xx-large; 
+    font-weight:bolder; 
+    display: block;
+    text-align: center;
+    margin: 40px;
+}
+
 .todos-box {
     display: flex;
     flex-wrap: wrap;
+    margin: 50px;
 }

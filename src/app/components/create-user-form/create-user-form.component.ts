@@ -4,6 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { inject, Input } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import { User } from "../user-list/user-card/user-card.component";
 
 export interface UserFormData {
   name: string;
@@ -15,12 +18,15 @@ export interface UserFormData {
 @Component({
     selector: 'create-user-form',
     standalone: true,
-    templateUrl: './create-user-form.html',
-    styleUrl: './create-user-form.scss',
+    templateUrl: './create-user-form.component.html',
+    styleUrl: './create-user-form.component.scss',
     imports: [ReactiveFormsModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatCheckboxModule]
 })
 
 export class CreateUserFormComponent {
+    @Input()
+        user!: User;
+
     @Output()
     createUser = new EventEmitter<UserFormData>();
 
