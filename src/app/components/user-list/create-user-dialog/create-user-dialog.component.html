@@ -22,10 +22,13 @@
             <input matInput placeholder="google.com" formControlName="website">
         </mat-form-field>
       
-        <button class="create-user-button" 
-        [disabled]="form.invalid" 
-        mat-button matButton="outlined" 
-        (click)="openSnackBar('Пользователь добавлен', 'Готово')">
+        <button 
+            class="create-user-button" 
+            [disabled]="form.invalid" 
+            mat-button 
+            matButton="outlined" 
+            (click)="onEditClick()"
+        >
             Добавить пользователя
         </button>
     </form>

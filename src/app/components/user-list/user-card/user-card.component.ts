@@ -28,7 +28,7 @@ export class UserCardComponent {
     deleteUser = new EventEmitter<number>();
 
     @Output()
-    editUser = new EventEmitter<number>();
+    editUser = new EventEmitter<User>();
 
     readonly dialog = inject(MatDialog);
 

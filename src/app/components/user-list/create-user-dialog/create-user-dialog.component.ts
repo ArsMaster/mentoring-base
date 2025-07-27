@@ -6,6 +6,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { NotificationService } from '../../../notification.service';
 
 @Component({
   selector: 'app-create-user-dialog',
@@ -16,8 +17,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 export class CreateUserDialogComponent {
   public readonly data = inject<{ user: User | null }>(MAT_DIALOG_DATA, { optional: true });
-
   private readonly dialogRef = inject(MatDialogRef<CreateUserDialogComponent>);
+  private notificationService = inject(NotificationService);
 
   public form = new FormGroup({
     name: new FormControl(this.data?.user?.name ?? '', [Validators.required, Validators.minLength(2)]),
@@ -30,16 +31,9 @@ export class CreateUserDialogComponent {
     if (this.form.valid) {
       this.dialogRef.close(this.form.value);
     }
-  }
+  };
 
-  private _snackBar = inject(MatSnackBar);
-
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 3000,
-      verticalPosition:'top',
-      horizontalPosition: 'center',
-    }
-    );
+  onEditClick(): void {
+    this.notificationService.openSnackBar('Пользователь добавлен', 'Готово');
   };
 }

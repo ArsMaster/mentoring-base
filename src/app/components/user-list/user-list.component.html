@@ -1,15 +1,17 @@
 <!--Cписок пользователей-->
 <span class="heading_users">Список пользователей</span>
+
 <button (click)="openCreateDialog()" class="createButton">
-        Создать пользователя
+  Создать пользователя
 </button>
+
 <div class="users_containter">
   @for (user of usersService.users$ | async; track user) {
     <div class="users">
       <app-user-card 
-      [user]="user" 
-      (deleteUser)="deleteUser($event)"
-      (editUser)="editUser($event)"
+        [user]="user" 
+        (deleteUser)="deleteUser($event)"
+        (editUser)="editUser($event)"
       ></app-user-card>
     </div>
   }
