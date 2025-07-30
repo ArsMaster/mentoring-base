@@ -9,6 +9,7 @@ interface TodoFormData {
   text: string;
   author: string;
   completed: boolean;
+  userId: number;
 }
 
 @Component({
@@ -27,6 +28,7 @@ export class CreateTodoFormComponent {
         text: new FormControl('', [Validators.required, Validators.minLength(2)]),
         author: new FormControl('', [Validators.required, Validators.minLength(2)]),
         completed: new FormControl(false),
+        userId: new FormControl(1, [Validators.required]),
     })
 
     public submitForm(): void {
@@ -34,7 +36,8 @@ export class CreateTodoFormComponent {
             this.createTodo.emit({
                 text: this.form.value.text!,
                 author: this.form.value.author!,
-                completed: this.form.value.completed!
+                completed: this.form.value.completed!,
+                userId: this.form.value.userId!,
             });
             this.form.reset();
         }

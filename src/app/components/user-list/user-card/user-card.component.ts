@@ -3,6 +3,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { EditUserDialogComponent } from "../edit-user-dialog/edit-user-dialog.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { DeleteUserDialogComponent } from "../delete-user-dialog/delete-user-dialog.component";
+import { PhoneFormatPipe } from "../../../phone-format.pipe";
 
 export interface User {
   id: number;
@@ -10,6 +11,7 @@ export interface User {
   username: string;
   email: string;
   website: string;
+  phone: string;
 }
 
 @Component ({
@@ -17,7 +19,7 @@ export interface User {
     templateUrl: './user-card.component.html',
     styleUrl: './user-card.component.scss',
     standalone: true,
-    imports: [MatDialogModule],
+    imports: [MatDialogModule, PhoneFormatPipe,],
 })
 
 export class UserCardComponent {

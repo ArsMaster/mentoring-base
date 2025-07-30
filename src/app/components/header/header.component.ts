@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 const newPages : number[] = [5,4,3,2,1]
 
@@ -12,7 +13,7 @@ const upperCasemenuItems : string[] = menuItems.map(
 
 @Component({
     selector: 'app-header',
-    imports: [RouterLink],
+    imports: [RouterLink, DatePipe],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss'
 })
@@ -31,6 +32,8 @@ isShowCatalog : boolean = true;
   menuItems : string[] = upperCasemenuItems;
 
   isUpperCase : boolean = true;
+
+  currentDate = new Date();
 
   changeMenuText(): void {
     this.menuItems = upperCasemenuItems.map(

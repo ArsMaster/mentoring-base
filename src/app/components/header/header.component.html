@@ -14,6 +14,7 @@
         <button routerLink="user" class="admin">Пользователи</button>
         <button routerLink="todos" class="admin">Задачи</button>
       </nav>
+      <p>Сегодня: {{ currentDate | date:'medium' }}</p>
     </div>
     <div class="header-right">
       <img src="assets/phone.svg" alt="Телефон">

@@ -9,6 +9,7 @@ import { CreateTodoFormComponent } from "../create-todo-form/create-todo-form.co
 interface TodoFormData {
   text: string;
   completed: boolean;
+  userId: number;
 }
 
 @Component ({
@@ -37,7 +38,7 @@ export class TodosListComponent {
       id: new Date().getTime(),
       title: formData.text,
       completed: formData.completed,
-      userId: 1
+      userId: formData.userId,
     });
   }
 } 

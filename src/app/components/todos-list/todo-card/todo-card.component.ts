@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { TrancatePipe } from "../../../trancate.pipe";
 
 export interface Todo {
     userId: number,
@@ -11,7 +12,7 @@ export interface Todo {
     selector: 'app-todo-card',
     templateUrl: './todo-card.component.html',
     styleUrl: './todo-card.component.scss',
-    imports: []
+    imports: [TrancatePipe],
 })
 
 export class TodoCardComponent {
