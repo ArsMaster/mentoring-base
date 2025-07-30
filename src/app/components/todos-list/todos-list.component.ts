@@ -20,24 +20,24 @@ interface TodoFormData {
 })
 
 export class TodosListComponent {
-    readonly todosService = inject(TodosService);
+  readonly todosService = inject(TodosService);
 
-    constructor() {
-      inject(TodosApiService).getTodos().subscribe((response: Todo[]) => {
-        this.todosService.setTodos(response);
-      });
-    }
+  constructor() {
+    inject(TodosApiService).getTodos().subscribe((response: Todo[]) => {
+      this.todosService.setTodos(response);
+    });
+  }
 
-    deleteTodo(id: number): void {
-      this.todosService.deleteTodo(id);
-    }
+  deleteTodo(id: number): void {
+    this.todosService.deleteTodo(id);
+  }
 
-    public createTodo(formData: TodoFormData) {
-      this.todosService.createTodo({
-        id: new Date().getTime(),
-        title: formData.text,
-        completed: formData.completed,
-        userId: 1
-      });
-    }
+  public createTodo(formData: TodoFormData) {
+    this.todosService.createTodo({
+      id: new Date().getTime(),
+      title: formData.text,
+      completed: formData.completed,
+      userId: 1
+    });
+  }
 } 

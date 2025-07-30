@@ -15,12 +15,14 @@ import { NotificationService } from '../../../notification.service';
   styleUrl: './create-user-dialog.component.scss',
   standalone: true,
 })
+
 export class CreateUserDialogComponent {
   public readonly data = inject<{ user: User | null }>(MAT_DIALOG_DATA, { optional: true });
   private readonly dialogRef = inject(MatDialogRef<CreateUserDialogComponent>);
   private notificationService = inject(NotificationService);
 
   public form = new FormGroup({
+    id: new FormControl(this.data?.user?.id ?? new Date().getTime()),
     name: new FormControl(this.data?.user?.name ?? '', [Validators.required, Validators.minLength(2)]),
     username: new FormControl(this.data?.user?.username ?? '', [Validators.required, Validators.minLength(2)]),
     email: new FormControl(this.data?.user?.email ?? '', [Validators.required, Validators.email]),
@@ -33,7 +35,7 @@ export class CreateUserDialogComponent {
     }
   };
 
-  onEditClick(): void {
+  createUserClick(): void {
     this.notificationService.openSnackBar('Пользователь добавлен', 'Готово');
   };
 }

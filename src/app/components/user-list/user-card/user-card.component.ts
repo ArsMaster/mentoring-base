@@ -44,15 +44,15 @@ export class UserCardComponent {
     });
   }
 
-    openDialog(): void {
-      const dialogRef = this.dialog.open(EditUserDialogComponent, {
-        data: { user: this.user },
-      });
+  openDialog(): void {
+    const dialogRef = this.dialog.open(EditUserDialogComponent, {
+      data: { user: this.user },
+    });
 
-      dialogRef.afterClosed().subscribe(editResult => {
-        if (editResult) {
-          this.editUser.emit(editResult);
-        }
-      });
-    }
+    dialogRef.afterClosed().subscribe(editResult => {
+      if (editResult) {
+        this.editUser.emit(editResult);
+      }
+    });
+  }
 }

@@ -25,11 +25,10 @@
             class="edit-user-button" 
             [disabled]="form.invalid" 
             mat-button 
-            [mat-dialog-close]="userWithUpdatedFields"
-            (click)="onEditClick()"
+            [mat-dialog-close]="form.value"
+            (click)="editUserClick()"
         >
             Изменить пользователя
         </button>
     </form>
 </div>
-

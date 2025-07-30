@@ -14,11 +14,12 @@ import { NotificationService } from '../../../notification.service';
   styleUrl: './delete-user-dialog.component.scss',
   standalone: true,
 })
+
 export class DeleteUserDialogComponent {
   public readonly data = inject<{ user: User }>(MAT_DIALOG_DATA);
   private notificationService = inject(NotificationService);
 
-  onEditClick(): void {
+  deleteUserClick(): void {
     this.notificationService.openSnackBar('Пользователь удален', 'Готово');
   };
 }

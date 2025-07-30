@@ -1,4 +1,3 @@
-
 <mat-dialog-actions>
   <h2 class="headingdelete">Вы точно хотите удалить пользователя? {{ this.data.user.name }}</h2>
 
@@ -14,7 +13,7 @@
     mat-button
     matButton 
     [mat-dialog-close]="true"
-    (click)="onEditClick()"
+    (click)="deleteUserClick()"
   >
     Удалить
   </button>

@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 
 const newPages : number[] = [5,4,3,2,1]

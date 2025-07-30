@@ -17,9 +17,9 @@ import { CreateUserDialogComponent } from './create-user-dialog/create-user-dial
 })
 
 export class UserComponent {
-readonly usersService = inject(UsersService);
-readonly usersApiService = inject(UsersApiService);
-readonly dialog = inject(MatDialog);
+  readonly usersService = inject(UsersService);
+  readonly usersApiService = inject(UsersApiService);
+  readonly dialog = inject(MatDialog);
 
   constructor() {
       this.usersApiService.getUsers().subscribe((response: User[]) => {
@@ -40,12 +40,9 @@ readonly dialog = inject(MatDialog);
       width: '400px',
     });
 
-    dialogRef.afterClosed().subscribe((createResult: User | undefined) => {
-      if (createResult) {
-        this.usersService.createUser({
-          ...createResult,
-          id: new Date().getTime(),
-        });
+    dialogRef.afterClosed().subscribe((user: User | undefined) => {
+      if (user) {
+        this.usersService.createUser(user);
       }
     });
   }

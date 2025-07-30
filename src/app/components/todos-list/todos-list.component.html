@@ -1,5 +1,7 @@
 <p class="todos-heading">Список задач</p>
+
 <create-todo-form (createTodo)="createTodo($event)"></create-todo-form>
+
 <div class="todos-box">
   @for (todo of todosService.todos$ | async; track todo) {
     <div>

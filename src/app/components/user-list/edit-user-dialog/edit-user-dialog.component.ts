@@ -19,20 +19,14 @@ export class EditUserDialogComponent {
   private notificationService = inject(NotificationService);
 
     public form = new FormGroup({
+      id: new FormControl(this.data.user.id),
       name: new FormControl(this.data.user.name, [Validators.required, Validators.minLength(2)]),
       username: new FormControl(this.data.user.username, [Validators.required, Validators.minLength(2)]),
       email: new FormControl(this.data.user.email, [Validators.required, Validators.email]),
       website: new FormControl(this.data.user.website, [Validators.required, Validators.minLength(3)]),
   });
 
-  get userWithUpdatedFields() {
-      return {
-          ...this.form.value,
-          id: this.data.user.id,
-      };
-  };
-
-  onEditClick(): void {
+  editUserClick(): void {
     if (this.form.valid) {
       this.notificationService.openSnackBar('Данные изменены', 'Готово');
     }
