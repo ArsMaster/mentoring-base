@@ -33,7 +33,7 @@ isShowCatalog : boolean = true;
 
   isUpperCase : boolean = true;
 
-  currentDate = new Date();
+  currentDate: Date = new Date();
 
   changeMenuText(): void {
     this.menuItems = upperCasemenuItems.map(

@@ -19,7 +19,7 @@ export interface User {
     templateUrl: './user-card.component.html',
     styleUrl: './user-card.component.scss',
     standalone: true,
-    imports: [MatDialogModule, PhoneFormatPipe,],
+    imports: [MatDialogModule, PhoneFormatPipe],
 })
 
 export class UserCardComponent {
