@@ -1,4 +1,4 @@
-<div>
+<div appHoverShadow class="user-box">
     <p>{{ user.name }}</p>
     <p>{{ user.email }}</p>
     <p>{{ user.website }}</p>
@@ -6,14 +6,18 @@
 
     <button 
         (click)="openDeleteDialog()" 
+        matButton="elevated"
         class="deleteButton"
+        matTooltip="Удалить пользователя"
     >
         Удалить
     </button>
 
     <button 
         (click)="openDialog()" 
+        matButton="elevated"
         class="deleteButton"
+        matTooltip="Редактировать данные пользователя"
     >
         Изменить
     </button>          

@@ -4,6 +4,9 @@ import { EditUserDialogComponent } from "../edit-user-dialog/edit-user-dialog.co
 import { MatDialogModule } from "@angular/material/dialog";
 import { DeleteUserDialogComponent } from "../delete-user-dialog/delete-user-dialog.component";
 import { PhoneFormatPipe } from "../../../phone-format.pipe";
+import { MatButtonModule } from "@angular/material/button";
+import { HoverShadowDirective } from "../../../directives/hover-shadow.directive";
+import { MatTooltipModule, TooltipComponent } from '@angular/material/tooltip';
 
 export interface User {
   id: number;
@@ -19,7 +22,7 @@ export interface User {
     templateUrl: './user-card.component.html',
     styleUrl: './user-card.component.scss',
     standalone: true,
-    imports: [MatDialogModule, PhoneFormatPipe],
+    imports: [MatDialogModule, PhoneFormatPipe, MatButtonModule, HoverShadowDirective, TooltipComponent, MatTooltipModule],
 })
 
 export class UserCardComponent {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { ChangeColor } from '../../directives/change-color.directive';
 
 const newPages : number[] = [5,4,3,2,1]
 
@@ -13,7 +14,7 @@ const upperCasemenuItems : string[] = menuItems.map(
 
 @Component({
     selector: 'app-header',
-    imports: [RouterLink, DatePipe],
+    imports: [RouterLink, DatePipe, ChangeColor],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss'
 })

@@ -9,7 +9,7 @@ interface TodoFormData {
   text: string;
   author: string;
   completed: boolean;
-  userId: number | null;
+  userId: number;
 }
 
 @Component({

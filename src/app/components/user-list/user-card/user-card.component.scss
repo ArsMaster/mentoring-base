@@ -1,12 +1,13 @@
 .deleteButton {
-    border-radius: 30px;
-    border: 1px solid #F0BA4E;
     padding: 10px;
-    font-size: 14px;
     margin-top: 30px;
     margin-left: 10px;
 }
 
 .deleteButton:nth-of-type(2) {
     margin-left: 20px;
+}
+
+.user-box {
+    padding: 15px;
 }
