@@ -11,8 +11,9 @@
         <div class="header-nav-item thelastone">{{ navItem3 }}</div>
         <button (click)="isShowAboutCompany = !isShowAboutCompany" class="admin">Скрыть/Показать</button>
         <button (click)="changeMenuText()" class="admin">Изменить текст</button>
-        <button routerLink="user" class="admin">Пользователи</button>
+        <button routerLink="user" class="admin">Юзеры</button>
         <button routerLink="todos" class="admin">Задачи</button>
+        <button routerLink="admin" class="admin">Админка</button>
       </nav>
 
       <p>Сегодня: {{ currentDate | date:'medium' }}</p>
@@ -26,6 +27,10 @@
         <img src="assets/cart.svg">
         <span class="empty">Пусто</span>
       </button>
+      <div>
+        <button (click)="openDialog()" *ngIf="(userService.user$ | async) === null">Войти</button>
+        <button (click)="logout()" *ngIf="(userService.user$ | async) !== null">Выйти</button>
+      </div>
     </div>
   </div>
   <!-- нижняя часть шапки -->
