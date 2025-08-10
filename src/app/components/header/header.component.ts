@@ -1,11 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AsyncPipe, DatePipe, NgIf } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 import { ChangeColor } from '../../directives/change-color.directive';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthComponent } from '../../auth/auth.component';
 import { UserService } from '../../user.service';
-
 
 const newPages : number[] = [5,4,3,2,1]
 
@@ -18,7 +17,7 @@ const upperCasemenuItems : string[] = menuItems.map(
 
 @Component({
     selector: 'app-header',
-    imports: [RouterLink, DatePipe, ChangeColor, AsyncPipe, NgIf],
+    imports: [RouterLink, DatePipe, ChangeColor, AsyncPipe],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss',
     standalone: true
@@ -72,9 +71,7 @@ isShowCatalog : boolean = true;
   }
 
   public logout() {
-    if (confirm('Вы точно хотите выйти?')){
-      return this.userService.logout();
-    }
-    else return false;
+    const isConfirmed = confirm('Вы точно хотите выйти?');
+    return isConfirmed ? this.userService.logout() : false;
   }
 }

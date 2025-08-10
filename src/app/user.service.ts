@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 export interface IUser {
   name: string,
   email: string,
-  isAdmin: boolean | null;
+  isAdmin: boolean;
 }
 
 @Injectable({
@@ -18,22 +18,22 @@ export class UserService {
   private user: IUser = {
     name: 'Arsen',
     email: 'g.arsen90@gmail.com',
-    isAdmin: null,
+    isAdmin: false,
   }
 
-  loginAsAdmin() {
-    this.userSubject$.next({...this.user, isAdmin: true})
+  loginAsAdmin(): void {
+    this.userSubject$.next({ ...this.user, isAdmin: true })
   }
 
-  loginAsUser() {
-    this.userSubject$.next({...this.user, isAdmin: false})
+  loginAsUser(): void {
+    this.userSubject$.next({ ...this.user, isAdmin: false })
   }
 
-  get isAdmin() {
+  get isAdmin(): boolean | undefined {
     return this.userSubject$.value?.isAdmin
   }
 
-  logout() {
+  logout(): void {
     this.userSubject$.next(null)
   } 
 }

@@ -28,8 +28,11 @@
         <span class="empty">Пусто</span>
       </button>
       <div>
-        <button (click)="openDialog()" *ngIf="(userService.user$ | async) === null">Войти</button>
-        <button (click)="logout()" *ngIf="(userService.user$ | async) !== null">Выйти</button>
+        @if (userService.user$ | async; as user) {
+          <button (click)="logout()">Выйти</button>
+        } @else {
+          <button (click)="openDialog()">Войти</button>
+        }
       </div>
     </div>
   </div>
