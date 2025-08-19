@@ -3,7 +3,7 @@
 <create-todo-form (createTodo)="createTodo($event)"></create-todo-form>
 
 <div class="todos-box">
-  @for (todo of todosService.todos$ | async; track todo) {
+  @for (todo of todos$ | async; track todo) {
     <div>
       <app-todo-card [todo]="todo" (deleteTodo)="deleteTodo($event)"></app-todo-card>
     </div>

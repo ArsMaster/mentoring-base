@@ -3,8 +3,10 @@ import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output
 import { TodoCardComponent } from "./todo-card/todo-card.component";
 import { TodosApiService } from "./todos.api-service.component"; 
 import { Todo } from "./todo-card/todo-card.component";
-import { TodosService } from "./todos.service";
 import { CreateTodoFormComponent } from "../create-todo-form/create-todo-form.component";
+import { Store } from "@ngrx/store";
+import { TodoActions } from "./store-todos/todo.actions";
+import { selectTodos } from "./store-todos/todo.selectors";
 
 interface TodoFormData {
   text: string;
@@ -21,24 +23,27 @@ interface TodoFormData {
 })
 
 export class TodosListComponent {
-  readonly todosService = inject(TodosService);
+  private readonly store = inject(Store);
+  public readonly todos$ = this.store.select(selectTodos);
 
   constructor() {
     inject(TodosApiService).getTodos().subscribe((response: Todo[]) => {
-      this.todosService.setTodos(response);
+      this.store.dispatch(TodoActions.set({ todos: response }));
     });
   }
 
   deleteTodo(id: number): void {
-    this.todosService.deleteTodo(id);
+    this.store.dispatch(TodoActions.delete({ id }));
   }
 
   public createTodo(formData: TodoFormData) {
-    this.todosService.createTodo({
-      id: new Date().getTime(),
-      title: formData.text,
-      completed: formData.completed,
-      userId: formData.userId,
-    });
+    this.store.dispatch(TodoActions.create({ 
+      todo: {
+        id: new Date().getTime(),
+        title: formData.text,
+        completed: formData.completed,
+        userId: formData.userId,
+      }, 
+    }));
   }
 } 

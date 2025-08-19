@@ -1,11 +1,12 @@
-import { UsersApiService } from './user-list.api.service';
 import { UserCardComponent } from './user-card/user-card.component';
 import { AsyncPipe } from "@angular/common";
 import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from "@angular/core";
-import { UsersService } from './users.service';
 import { User } from './user-card/user-card.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateUserDialogComponent } from './create-user-dialog/create-user-dialog.component';
+import { Store } from '@ngrx/store';
+import { UserActions } from './store/user.actions';
+import { selectUsers } from './store/users.selectors';
 
 @Component({
     selector: 'app-user',
@@ -17,22 +18,20 @@ import { CreateUserDialogComponent } from './create-user-dialog/create-user-dial
 })
 
 export class UserComponent {
-  readonly usersService = inject(UsersService);
-  readonly usersApiService = inject(UsersApiService);
   readonly dialog = inject(MatDialog);
-
+  private readonly store = inject(Store);
+  public readonly users$ = this.store.select(selectUsers);
+  
   constructor() {
-      this.usersApiService.getUsers().subscribe((response: User[]) => {
-        this.usersService.setUsers(response);
-      });
+      this.store.dispatch(UserActions.loadUsers());
     }
 
     deleteUser(id: number): void {
-      this.usersService.deleteUser(id);
+      this.store.dispatch(UserActions.delete({ id }));
     }
 
     editUser(user: User) {
-      this.usersService.editUser(user)
+      this.store.dispatch(UserActions.edit({ user }));
     }
 
     openCreateDialog(): void {
@@ -42,7 +41,7 @@ export class UserComponent {
 
     dialogRef.afterClosed().subscribe((user: User | undefined) => {
       if (user) {
-        this.usersService.createUser(user);
+        this.store.dispatch(UserActions.create({ user }));
       }
     });
   }
